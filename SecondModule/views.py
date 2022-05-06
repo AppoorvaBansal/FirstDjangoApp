@@ -6,6 +6,7 @@ from django.shortcuts import redirect, render
 from SecondModule.models import UserData
 from SecondModule.forms import UserForm
 from django.contrib import messages
+from django.core.paginator import Paginator #1
 
 # Create your views here.
 def secondModule(request):
@@ -19,11 +20,30 @@ def secondModule(request):
           
      else:
           allUserdata=UserData.objects.all
+          paginator=Paginator(allUserdata,5)
+          pg=request.GET.get('page')
+          allUserdata=paginator.get_page(pg)
           return render(request,'SecondHome.html',{"allUser":allUserdata})
 
 def deleteUser(request,user_id):
     Userdetail=UserData.objects.get(pk=user_id)
     Userdetail.delete()
+
+    return redirect('secondModule')
+
+
+
+def checkadmin(request,user_id):
+    Userdetail=UserData.objects.get(pk=user_id)
+    Userdetail.isAdmin=True
+    Userdetail.save()
+
+    return redirect('secondModule')
+
+def checkstudent(request,user_id):
+    Userdetail=UserData.objects.get(pk=user_id)
+    Userdetail.isAdmin=False
+    Userdetail.save()
 
     return redirect('secondModule')
 

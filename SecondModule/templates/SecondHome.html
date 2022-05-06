@@ -55,6 +55,7 @@
              <th scope="col">S/R No.</th>
             <th scope="col">User Name</th>
             <th scope="col">Password</th>
+            <th scope="col">Status</th>
             <th scope="col">Is Admin</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
@@ -70,6 +71,7 @@
             <td>{{obj.username}}</td>
             <td>{{obj.password}}</td>
             <td>ADMIN</td>
+            <td><a href="{% url 'checkstudent' obj.id%}">Mark as Student</td>
             <td><a href="{% url 'editUser' obj.id%}">Edit</a></td>
             <td><a href="{% url 'deleteUser' obj.id%}">Delete</a></td>
           </tr>
@@ -79,6 +81,7 @@
             <td>{{obj.username}}</td>
             <td>{{obj.password}}</td>
             <td>STUDENT</td>
+            <td><a href="{% url 'checkadmin' obj.id%}">Mark as Admin</td>
             <td><a href="{% url 'editUser' obj.id%}">Edit</a></td>
             <td><a href="{% url 'deleteUser' obj.id%}">Delete</a></td>
           </tr>
@@ -91,23 +94,26 @@
         {% endfor %}
         </tbody>
       </table>
-
+    </br>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item disabled">
+            <a class="page-link">Previous</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
 
 
     </br>
 </br>
 
-
-
-
-
-    {% for obj in allUser  %}
-        {{obj.username}} | {{obj.password}} | {{obj.isAdmin}}
-</br>
-    {% endfor %}
-
-</br>
-
+    
 
 </div>
 
