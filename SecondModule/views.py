@@ -19,7 +19,7 @@ def secondModule(request):
           return redirect("secondModule")
           
      else:
-          allUserdata=UserData.objects.all
+          allUserdata=UserData.objects.all()
           paginator=Paginator(allUserdata,5)
           pg=request.GET.get('page')
           allUserdata=paginator.get_page(pg)
