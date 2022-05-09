@@ -52,13 +52,13 @@
     <table class="table">
         <thead>
           <tr>
-             <th scope="col">S/R No.</th>
-            <th scope="col">User Name</th>
-            <th scope="col">Password</th>
-            <th scope="col">Status</th>
-            <th scope="col">Is Admin</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
+             <!--<th class="col">S/R No.</th> -->
+            <th class="col-3">User Name</th>
+            <th class="col-3">Password</th>
+            <th class="col-2">Status</th>
+            <th class="col-3">Is Admin</th>
+            <th class="col-1">Edit</th>
+            <th class="col-1">Delete</th>
           </tr>
         </thead>
          
@@ -67,23 +67,24 @@
             
         {% if obj.isAdmin %}
         <tr class="table-success">
-            <th scope="row">{{obj.id}}</th>
-            <td>{{obj.username}}</td>
-            <td>{{obj.password}}</td>
-            <td>ADMIN</td>
-            <td><a href="{% url 'checkstudent' obj.id%}">Mark as Student</td>
-            <td><a href="{% url 'editUser' obj.id%}">Edit</a></td>
-            <td><a href="{% url 'deleteUser' obj.id%}">Delete</a></td>
+           <!---- <th scope="row">{{forloop.counter}}</th> -->
+            <td  class="col-3">{{obj.username}}</td>
+            <td class="col-3">{{obj.password}}</td>
+            <td  class="col-2">ADMIN</td>
+            <td  class="col-3" ><a href="{% url 'checkstudent' obj.id%}"><button type="button" class="btn btn-secondary">Mark as Student</button></td>
+            <td  class="col-1"><a href="{% url 'editUser' obj.id%}"><button type="button" class="btn btn-info">Edit</button></a></td>
+            <td  class="col-1"><a href="{% url 'deleteUser' obj.id%}"><button type="button" class="btn btn-danger">Delete</button>
+            </a></td>
           </tr>
         {% else %}
         <tr class="table-danger">
-            <th scope="row">{{obj.id}}</th>
-            <td>{{obj.username}}</td>
-            <td>{{obj.password}}</td>
-            <td>STUDENT</td>
-            <td><a href="{% url 'checkadmin' obj.id%}">Mark as Admin</td>
-            <td><a href="{% url 'editUser' obj.id%}">Edit</a></td>
-            <td><a href="{% url 'deleteUser' obj.id%}">Delete</a></td>
+           <!---- <th scope="row">{{forloop.counter}}</th> -->
+            <td  class="col-3">{{obj.username}}</td>
+            <td  class="col-3">{{obj.password}}</td>
+            <td  class="col-2">STUDENT</td>
+            <td  class="col-3"><a href="{% url 'checkadmin' obj.id%}"><button type="button" class="btn btn-secondary">Mark as Admin</button></td>
+            <td  class="col-1"><a href="{% url 'editUser' obj.id%}"><button type="button" class="btn btn-info">Edit</button></a></td>
+            <td class="col-1" ><a href="{% url 'deleteUser' obj.id%}"><button type="button" class="btn btn-danger">Delete</button></a></td>
           </tr>
 
         

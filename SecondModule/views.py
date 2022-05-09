@@ -74,6 +74,11 @@ def addEvent(request):
      return render(request,'addevent.html',context)
      #return HttpResponse("SECOND MODULE HOME PAGE")
 
+def index(request):
+     context={'textindex':"WELCOME HOME PAGE"}
+     return render(request,'index.html',context)
+     #return HttpResponse("SECOND MODULE HOME PAGE")
+
 def aboutus(request):
      context={'textabout':"ABOUT US PAGE"}
      return render(request,'SecondAboutUS.html',context)
